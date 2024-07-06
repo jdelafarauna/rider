@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Datos</h1>
+    <table id="datos">
+        <thead>
+            <tr>
+                <th>Orgánica</th>
+                <th>Concurso</th>
+                <th>Ámbito</th>
+                <th>Tiempo</th>
+                <th>Altura</th>
+                <th>Número</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    
+
+    <script>
+        const urlD = 'https://riderrank.onrender.com/apiConcurso/datos';
+        // Utilizaremos JavaScript para hacer una solicitud GET al endpoint /datos y mostrar los datos en la página
+        fetch(urlD)
+            .then(response => response.json()) // Convertimos la respuesta a formato JSON
+            .then(data => {
+                const datosTable = document.getElementById('datos').getElementsByTagName('tbody')[0];
+                data.forEach(item => {
+                    const row = datosTable.insertRow();
+                    const cell1 = row.insertCell(0);
+                    const cell2 = row.insertCell(1);
+                    const cell3 = row.insertCell(2);
+                    const cell4 = row.insertCell(3);
+                    const cell5 = row.insertCell(4);
+                    const cell6 = row.insertCell(5);
+                    const cell7 = row.insertCell(6);
+                    cell1.textContent = item.organica;
+                    cell2.textContent = item.concurso;
+                    cell3.textContent = item.ambito;
+                    cell4.textContent = item.tiempo;
+                    cell5.textContent = item.altura;
+                    cell6.textContent = item.numero;
+                    cell7.textContent = item.fecha;
+                });
+            })
+            .catch(error => console.error('Ha ocurrido un error:', error));
+    </script>
+</body>
+</html>

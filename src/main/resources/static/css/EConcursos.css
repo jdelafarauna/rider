@@ -1,0 +1,142 @@
+/* Estilos específicos para la sección de concursos */
+.concursos-container {
+    padding: 30px;
+    margin-top: -90px;
+}
+
+.concursos-container .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 0 -20px;
+    margin-top: 30px;
+}
+
+.concursos-container .box {
+    width: calc(25%);
+    margin-bottom: 30px;
+    background-color: #f2f2f2;
+    border-radius: 30px;
+    overflow: hidden;
+    background-color: #676767;
+    position: relative;
+    color: #fff;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.box:hover {
+    transform: translateY(-20px);
+    background: linear-gradient(45deg, #c7c7c7, #575757);
+    border-radius: 1.2em;
+}
+
+.concursos-container .box img {
+    width: 80%;
+    height: auto;
+    display: flex;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 30px;
+}
+
+.box::before {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(45deg, #ffbc00, #ff0058);
+    border-radius: 1.2em;
+}
+
+.box::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ffbc00, #ff0058);
+    filter: blur(30px);
+}
+
+.box span {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 2;
+    border-radius: 1em;
+}
+
+.box span::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.box .content {
+    position: relative;
+    padding: 10px;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.5em;
+}
+
+.concursos-container .box h2 {
+    padding: 1rem;
+    text-align: center;
+    color: #000000;
+    margin: 0;
+}
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background-color: #f0dcc9;
+}
+
+h1 {
+    text-align: center;
+    padding: 1rem;
+    color: #333;
+    margin-top: 40px;
+    font-size: 350%;
+    padding-top: 20px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+.link {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .concursos-container .box {
+        width: calc(50% - 40px);
+    }
+}
+
+@media (max-width: 480px) {
+    .concursos-container .box {
+        width: calc(100% - 40px);
+    }
+}

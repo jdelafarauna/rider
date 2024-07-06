@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Datos de Competición</title>
+    <link rel="stylesheet" type="text/css" href="/css/EeditorP.css">
+    <link rel="stylesheet" type="text/css" href="/css/ECabecera.css">
+
+    
+</head>
+<body>
+    
+    <nav class="navbar">
+        <img src="../../Imagenes/logoC.png" alt="logo">
+        <div class="containerCabecera">
+            
+            <ul class="nav-links">
+                <li><a href="indice">Inicio</a></li>
+                <li><a href="calendario">Calendario</a></li>
+                <li><a href="formuReserva">Reservas</a></li>
+                <li><a href="concursos">Concursos</a></li>
+                <li><a href="Contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="espacio">
+            <h2>Participante</h2>
+            <form id="contForm" method="post">
+                <label for="name">Nombre del Competidor:</label><br>
+                <input type="text" id="name" name="name" required><br><br>
+        
+                <label for="horse">Nombre del Caballo:</label><br>
+                <input type="text" id="horse" name="horse" required><br><br>
+        
+                <label for="knocks">Número de Derribos:</label><br>
+                <input type="number" id="knocks" name="knocks" required><br><br>
+        
+                <label for="disob">Número de Desobediencias:</label><br>
+                <input type="number" id="disob" name="disob" required><br><br>
+                
+                <label for="elim">Eliminado:</label>
+                <input type="checkbox" id="elim" name="elim">
+        
+                <label style="margin-right: 40px;"></label>
+        
+                <label for="fall">Caido:</label>
+                <input type="checkbox" id="fall" name="fall"><br><br>
+        
+                <label for="time">Tiempo (en segundos):</label><br>
+                <input type="number" id="time" name="time" step="0.01" required><br><br>
+        
+                <label for="obs">Observaciones:</label><br>
+                <textarea id="obs" name="obs" rows="4" cols="50"></textarea><br><br>
+        
+                <input type="submit" value="Enviar datos editados">
+                <script src="editorP.js"></script>
+            </form>
+        </div>
+    
+        <div class="espacio" id="cronometro-container">
+            <div class="container">
+                <div class="col" id="cronometro">00:00</div>
+                <div class="col">
+                    <button onclick="iniciarCronometro()">&#9654;</button>
+                    <button onclick="pausarCronometro()">&#9208;</button>
+                    <button onclick="reiniciarCronometro()">&#8635;</button>
+                </div>
+            </div>
+        </div>
+        <script src="../static/cronometro.js"></script>
+    </div>
+    
+    
+
+
+    <br><br><br><br><br><br><br><br>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulario de Datos</title>
+<link rel="stylesheet" type="text/css" href="/css/EFormuConcurso.css">
+<link rel="stylesheet" type="text/css" href="/css/ECabecera.css">
+
+</head>
+<body>
+
+  <nav class="navbar">
+    <img src="../../Imagenes/logoC.png" alt="logo">
+    <div class="containerCabecera">
+        
+        <ul class="nav-links">
+            <li><a href="indice">Inicio</a></li>
+            <li><a href="calendario">Calendario</a></li>
+            <li><a href="formuReserva">Reservas</a></li>
+            <li><a href="concursos">Concursos</a></li>
+            <li><a href="Contacto">Contacto</a></li>
+        </ul>
+    </div>
+</nav>
+
+  <div class="form-container">
+    <h1>Datos del concurso</h1>
+    <form id="Concursoform">
+      <div class="form-group">
+        <label for="organica">Orgánica:</label>
+        <input type="text" id="organica" name="organica" required>
+      </div>
+      <div class="form-group">
+        <label for="concurso">Concurso:</label>
+        <input type="text" id="concurso" name="concurso" required>
+      </div>
+      <div class="form-group">
+        <label for="ambito">Ámbito:</label>
+        <input type="text" id="ambito" name="ambito" required>
+      </div>
+      <div class="form-group" id="tiempo-group">
+        <label for="tiempo" id="tiempo-label">Tiempo Concedido:</label>
+        <input type="number" id="tiempo" name="tiempo" >
+      </div>
+      <div class="form-group">
+        <label for="altura">Altura de Obstáculos:</label>
+        <input type="number" id="altura" name="altura" required>
+      </div>
+      <div class="form-group">
+        <label for="num_obstaculos">Número de Obstáculos:</label>
+        <input type="number" id="num_obstaculos" name="num_obstaculos" required>
+      </div>
+      <div class="form-group">
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="fecha" required>
+      </div>
+      <button  type="submit">Guardar</button>
+    </form>
+  </div>
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const prueba = urlParams.get('prueba'); // Obtiene el valor del parámetro 'prueba'
+
+console.log(prueba); // Muestra el valor de 'prueba' en la consola del navegador
+
+if (prueba === 'contrareloj') { 
+        const tiempoGroup = document.getElementById('tiempo-group');
+        if (tiempoGroup) {
+            tiempoGroup.style.display = 'none'; // Oculta el campo de entrada de tiempo concedido
+        }
+        const tiempoLabel = document.getElementById('tiempo-label');
+        if (tiempoLabel) {
+            tiempoLabel.style.display = 'none'; // Oculta la etiqueta de tiempo concedido
+        }
+    }
+const urlC = 'https://riderrank.onrender.com/apiConcurso/posts';
+
+document.getElementById('Concursoform').addEventListener('submit', function(event) {
+    event.preventDefault(); // Evita que el formulario se envíe por defecto
+
+    // Obtiene los valores de los campos del formulario
+    var organica = document.getElementById('organica').value;
+    var concurso = document.getElementById('concurso').value;
+    var ambito = document.getElementById('ambito').value;
+    var tiempo = parseInt(document.getElementById('tiempo').value);
+    var altura = parseInt(document.getElementById('altura').value);
+    var numero = parseInt(document.getElementById('num_obstaculos').value);
+    var fecha = document.getElementById('fecha').value;
+    // Suponiendo que 'participante' es un array de objetos con propiedades 'nombre' y 'edad'
+    var participante = [];
+    
+
+
+    // Crea el objeto 'data' con los valores obtenidos del formulario
+    const data = {
+        organica: organica,
+        concurso: concurso,
+        ambito: ambito,
+        tiempo: tiempo,
+        altura: altura,
+        numero: numero,
+        fecha: fecha,
+        prueba: prueba, // Agrega la variable 'prueba' al objeto 'data'
+        participante: participante
+    };
+
+
+    fetch(urlC, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error en la solicitud');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Nuevo post creado:', data);
+        window.location.href = `formuParticipante?id=${data}`;
+       // window.location.href = "formuParticipante?id=" + data.id;
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
+    // Finalmente, puedes limpiar los campos del formulario si es necesario
+    document.getElementById('organica').value = '';
+    document.getElementById('concurso').value = '';
+    document.getElementById('ambito').value = '';
+    document.getElementById('tiempo').value = '';
+    document.getElementById('altura').value = '';
+    document.getElementById('numero').value = '';
+    document.getElementById('fecha').value = '';
+
+  
+});
+
+
+</script>
+
+</body>
+</html>

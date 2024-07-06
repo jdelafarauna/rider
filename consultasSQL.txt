@@ -1,0 +1,104 @@
+******************************************************************************************************** 
+CLASIFICACIÓN GLOBAL
+
+	SELECT 
+    	      nombre,
+    	      SUM(puntos) AS puntos_totales,
+    	      AVG(tiempo) AS promedio_tiempo_veloz
+	FROM COMPETIDOR
+	GROUP BY nombre
+	ORDER BY puntos_totales ASC, promedio_tiempo_veloz ASC;
+
+******************************************************************************************************** 
+NUMERO DE VICTORIAS 
+
+	SELECT c.id AS id_concurso, co.nombre, COUNT(*) AS veces_ganadas
+	FROM COMPETIDOR co
+	JOIN (
+    		SELECT idconcurso, MIN(puntos) AS min_puntos
+    		FROM COMPETIDOR
+    		GROUP BY idconcurso
+	) AS min_puntos_concurso ON co.idconcurso = min_puntos_concurso.idconcurso AND co.puntos = min_puntos_concurso.min_puntos
+	JOIN CONCURSO c ON co.idconcurso = c.id
+	GROUP BY c.id, co.nombre;
+
+******************************************************************************************************** 
+NUMERO DE VECES EN X POSICIÓN
+
+	SELECT nombre, COUNT(*) AS num_primero
+	FROM (
+    	     SELECT nombre, ROW_NUMBER() OVER (PARTITION BY idconcurso ORDER BY puntos ASC) AS posicion
+    	     FROM COMPETIDOR
+	) AS clasificacion
+	WHERE posicion = X
+	GROUP BY nombre;
+
+******************************************************************************************************** 
+NUMERO DE VECES ELIMINADO
+
+SELECT nombre, SUM(CASE WHEN eliminado = true THEN 1 ELSE 0 END) AS num_eliminaciones
+FROM COMPETIDOR
+GROUP BY nombre;
+
+******************************************************************************************************** 
+TIEMPO MÁS RÁPIDO DEL CONCURSO
+
+SELECT idconcurso, MIN(tiempo) AS tiempo_mas_rapido
+FROM COMPETIDOR
+GROUP BY idconcurso;
+
+********************************************************************************************************
+ELIMINADO POR CAÍDA
+
+SELECT nombre, SUM(CASE WHEN caido = true THEN 1 ELSE 0 END) AS num_eliminaciones_por_caida
+FROM COMPETIDOR
+GROUP BY nombre;
+
+******************************************************************************************************** 
+ELIMINADO POR DESOBEDIENCIAS
+
+SELECT nombre, SUM(desobediencias) AS num_desobediencias
+FROM COMPETIDOR
+WHERE eliminado = true
+GROUP BY nombre;
+
+******************************************************************************************************** 
+PROMEDIO DE PUNTOS POR CONCURSO
+
+SELECT idconcurso, AVG(puntos) AS promedio_puntos
+FROM COMPETIDOR
+GROUP BY idconcurso;
+
+******************************************************************************************************** 
+PROMEDIO DE POSICIONES EN CLASIFICACIÓN
+
+SELECT nombre, AVG(posicion) AS promedio_posicion
+FROM (
+    SELECT nombre, ROW_NUMBER() OVER (ORDER BY puntos DESC) AS posicion
+    FROM COMPETIDOR
+) AS clasificacion
+GROUP BY nombre;
+
+******************************************************************************************************** 
+CONCURSOS EN LOS QUE UN COMPETIDOR HA PARTICIPADO
+
+SELECT co.nombre, COUNT(DISTINCT co.idconcurso) AS num_concursos_participados
+FROM COMPETIDOR co
+GROUP BY co.nombre;
+
+******************************************************************************************************** 
+TOTAL DE COMPETIDORES POR CONCURSO
+
+SELECT idconcurso, COUNT(*) AS total_competidores
+FROM COMPETIDOR
+GROUP BY idconcurso;
+
+********************************************************************************************************
+CONCURSOS EN LOS QUE X HA PARTICIPADO
+
+SELECT c.organica, c.fecha
+FROM COMPETIDOR co
+JOIN CONCURSO c ON co.idconcurso = c.id
+WHERE co.nombre = 'NombreCompetidor';
+
+******************************************************************************************************** ******************************************************************************************************** ******************************************************************************************************** ******************************************************************************************************** ******************************************************************************************************** ******************************************************************************************************** ******************************************************************************************************** ******************************************************************************************************** ******************************************************************************************************** ******************************************************************************************************** 
