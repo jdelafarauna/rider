@@ -123,12 +123,12 @@ function createCalendar(year, month) {
                             contentHTML += `
                                 <div class="concurso-info">
                                     <ul>
-                                        <li><strong>Organica:</strong> <span>${concursoData.organica}</span></li>
-                                        <li><strong>Concurso:</strong> <span>${concursoData.concurso}</span></li>
-                                        <li><strong>Ambito:</strong> <span>${concursoData.ambito}</span></li>
-                                        <li><strong>Tiempo:</strong> <span>${concursoData.tiempo}</span></li>
-                                        <li><strong>Altura:</strong> <span>${concursoData.altura}</span></li>
-                                        <li><strong>Numero:</strong> <span>${concursoData.numero}</span></li>
+                                        <li><strong>Organica:</strong> <span>${concursoData.organica}</span></li><br>
+                                        <li><strong>Concurso:</strong> <span>${concursoData.concurso}</span></li><br>
+                                        <li><strong>Ambito:</strong> <span>${concursoData.ambito}</span></li><br>
+                                        <li><strong>Tiempo:</strong> <span>${concursoData.tiempo}</span></li><br>
+                                        <li><strong>Altura:</strong> <span>${concursoData.altura}</span></li><br>
+                                        <li><strong>Numero:</strong> <span>${concursoData.numero}</span></li><br>
                                         <li><strong>Fecha:</strong> <span>${concursoData.fecha}</span></li>
                                     </ul>
                                     <button class="ver-clasificacion" onclick="verClasificacion('${concursoData.id}')">Ver Clasificacion</button>
@@ -151,10 +151,10 @@ function createCalendar(year, month) {
                             contentHTML += `
                                 <div class="reserva-info">
                                     <ul>
-                                        <li><strong>Organica:</strong> <span>${reservaData.organica}</span></li>
-                                        <li><strong>Concurso:</strong> <span>${reservaData.concurso}</span></li>
-                                        <li><strong>Ambito:</strong> <span>${reservaData.ambito}</span></li>
-                                        <li><strong>Fecha:</strong> <span>${reservaData.fecha}</span></li>
+                                        <li><strong>Organica:</strong> <span>${reservaData.organica}</span></li><br>
+                                        <li><strong>Concurso:</strong> <span>${reservaData.concurso}</span></li><br>
+                                        <li><strong>Ambito:</strong> <span>${reservaData.ambito}</span></li><br>
+                                        <li><strong>Fecha:</strong> <span>${reservaData.fecha}</span></li><br>
                                         <li><strong>Prueba:</strong> <span>${reservaData.prueba}</span></li>
                                     </ul>
                                     <button class="ver-reserva" onclick="verReserva('${reservaData.id}')">Ver reserva</button>
