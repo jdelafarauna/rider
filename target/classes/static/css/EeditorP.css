@@ -1,0 +1,104 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0dcc9;
+    margin: 0;
+    padding: 0;
+}
+
+.espacio {
+    flex: 1; /* Los divs ocuparán el mismo espacio */
+    padding: 20px; /* Añade un espacio alrededor del contenido dentro de los divs */
+    border: 1px solid #ccc; /* Agrega un borde alrededor de los divs */
+}
+
+.container {
+    width: 80%;
+    margin: 15px auto;
+    background-color: rgba(255,255,255,0.5);
+    padding: 20px;
+    line-height: normal;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan si no caben en una fila */
+    justify-content: space-between; /* Espacio uniforme entre los elementos */
+}
+
+#ParticipanteForm {
+    flex-basis: 48%; /* Ancho del formulario */
+}
+
+.col {
+    flex-basis: 100%; /* Ancho completo para que los botones ocupen una fila */
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+    width: calc(100% - 16px); /* Ancho del 100% menos el padding */
+    padding: 8px;
+    margin: 1px 0;
+    box-sizing: border-box;
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 4px;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/*CRONOMETRO*/
+#cronometro-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#cronometro {
+    font-size: 60px;
+    width: auto;
+    color: #fff;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* Centrar horizontalmente */
+    margin: 0 auto;
+}
+
+button {
+    font-size: 24px;
+    margin: 10px;
+    padding: 15px 30px;
+    border: none;
+    background-color: #4CAF50;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}

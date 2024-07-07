@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Competencia Ecuestre</title>
+    <link rel="stylesheet" type="text/css" href="/css/Ecrear.css">
+    <link rel="stylesheet" type="text/css" href="/css/ECabecera.css">
+
+</head>
+<body>
+   
+    <nav class="navbar">
+        <img src="../../Imagenes/logoC.png" alt="logo">
+        <div class="containerCabecera">
+            
+            <ul class="nav-links">
+                <li><a href="indice">Inicio</a></li>
+                <li><a href="calendario">Calendario</a></li>
+                <li><a href="formuReserva">Reservas</a></li>
+                <li><a href="concursos">Concursos</a></li>
+                <li><a href="Contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <h2>Registro de Competencia Ecuestre</h2>
+    <form id="competitionForm">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+
+        <label for="nombre_caballo">Nombre del Caballo:</label>
+        <input type="text" id="nombre_caballo" name="nombre_caballo" required><br><br>
+
+        <label for="desobediencias">Número de Desobediencias:</label>
+        <input type="number" id="desobediencias" name="desobediencias" min="0" required><br><br>
+
+        <label for="derribos">Número de Derribos:</label>
+        <input type="number" id="derribos" name="derribos" min="0" required><br><br>
+
+        <label for="tiempo">Tiempo en Segundos:</label>
+        <input type="number" id="tiempo" name="tiempo" min="0" required><br><br>
+
+        <input type="button" value="Enviar" onclick="submitForm()">
+    </form>
+
+    <table id="table" class="hidden">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Caballo</th>
+                <th>Desobediencias</th>
+                <th>Derribos</th>
+                <th>Tiempo</th>
+                <th>Puntuación</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+    </table>
+
+    <script src="../static/clasificacion.js"></script>
+</body>
+</html>
