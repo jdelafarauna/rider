@@ -123,13 +123,13 @@ function createCalendar(year, month) {
                             contentHTML += `
                                 <div class="concurso-info">
                                     <ul>
-                                        <li><strong>Organica:</strong> <span>${concursoData.organica}</span></li>
-                                        <li><strong>Concurso:</strong> <span>${concursoData.concurso}</span></li>
-                                        <li><strong>Ambito:</strong> <span>${concursoData.ambito}</span></li>
-                                        <li><strong>Tiempo:</strong> <span>${concursoData.tiempo}</span></li>
-                                        <li><strong>Altura:</strong> <span>${concursoData.altura}</span></li>
-                                        <li><strong>Numero:</strong> <span>${concursoData.numero}</span></li>
-                                        <li><strong>Fecha:</strong> <span>${concursoData.fecha}</span></li>
+                                        <li><strong>Organica:</strong> <span>${concursoData.organica}</span></li><br>
+                                        <li><strong>Concurso:</strong> <span>${concursoData.concurso}</span></li><br>
+                                        <li><strong>Ambito:</strong> <span>${concursoData.ambito}</span></li><br>
+                                        <li><strong>Tiempo:</strong> <span>${concursoData.tiempo}</span></li><br>
+                                        <li><strong>Altura:</strong> <span>${concursoData.altura}</span></li><br>
+                                        <li><strong>Numero:</strong> <span>${concursoData.numero}</span></li><br>
+                                        <li><strong>Fecha:</strong> <span>${concursoData.fecha}</span></li><br>
                                     </ul>
                                     <button class="ver-clasificacion" onclick="verClasificacion('${concursoData.id}')">Ver Clasificacion</button>
                                     <button class="editC" onclick="editCon('${concursoData.id}')">Editar</button>
